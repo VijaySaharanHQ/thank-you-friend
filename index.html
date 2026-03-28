@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Being My Friend</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #ff4b5c;
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+
+        .heart {
+            font-size: 40px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #ff4b5c;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e63946;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Thank You for Being My Friend 💖</h1>
+    <p>
+        You make my life brighter, happier, and more meaningful.
+        I'm truly grateful to have you in my life.
+    </p>
+
+    <div class="heart">❤️</div>
+
+    <button onclick="showMessage()">Click Me</button>
+    <p id="message"></p>
+</div>
+
+<script>
+    function showMessage() {
+        document.getElementById("message").innerText =
+        "No matter what happens, I'll always be there for you 😊";
+    }
+</script>
+
+</body>
+</html>
