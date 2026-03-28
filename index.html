@@ -1,86 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You for Being My Friend</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            color: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You for Being My Friend</title>
 
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            max-width: 500px;
-        }
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-        h1 {
-            color: #ff4b5c;
-        }
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
 
-        p {
-            font-size: 18px;
-            margin-top: 15px;
-        }
+    .container {
+        background: white;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        text-align: center;
+        max-width: 450px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
 
-        .heart {
-            font-size: 40px;
-            animation: beat 1s infinite;
-        }
+    h1 {
+        color: #ff4b5c;
+        font-size: 28px;
+    }
 
-        @keyframes beat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
+    input {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 80%;
+        margin-top: 15px;
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            background: #ff4b5c;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-        }
+    button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        border: none;
+        background: #ff4b5c;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
 
-        button:hover {
-            background: #e63946;
-        }
-    </style>
+    button:hover {
+        background: #e63946;
+        transform: scale(1.05);
+    }
+
+    .heart {
+        font-size: 50px;
+        margin: 15px 0;
+        animation: beat 1s infinite;
+    }
+
+    #message {
+        margin-top: 15px;
+        font-size: 18px;
+        color: #444;
+    }
+
+    iframe {
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    @keyframes beat {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(30px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <h1>Thank You for Being My Friend 💖</h1>
-    <p>
-        You make my life brighter, happier, and more meaningful.
-        I'm truly grateful to have you in my life.
-    </p>
+    <h1 id="title">Thank You for Being My Friend 💖</h1>
+
+    <input type="text" id="friendName" placeholder="Enter your friend's name">
+    <br>
+    <button onclick="generateMessage()">Create Surprise 🎁</button>
 
     <div class="heart">❤️</div>
 
-    <button onclick="showMessage()">Click Me</button>
     <p id="message"></p>
+
+    <!-- YouTube Music Embed -->
+    <iframe width="100%" height="200"
+        src="https://www.youtube.com/embed/6k8cpUkKK4c?autoplay=1&mute=1&loop=1&playlist=6k8cpUkKK4c"
+        allow="autoplay">
+    </iframe>
 </div>
 
 <script>
-    function showMessage() {
-        document.getElementById("message").innerText =
-        "No matter what happens, I'll always be there for you 😊";
+function generateMessage() {
+    let name = document.getElementById("friendName").value;
+
+    if(name === "") {
+        alert("Please enter your friend's name!");
+        return;
     }
+
+    document.getElementById("title").innerText =
+        "Thank You, " + name + ", for Being My Friend 💖";
+
+    document.getElementById("message").innerText =
+        name + ", you make my life happier and brighter. I'm lucky to have you 😊";
+
+    // 🎉 Confetti Animation
+    confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+}
 </script>
 
 </body>
